@@ -1,9 +1,9 @@
 # Image-Enhancement
 Small pipeline for enhancing degraded images using classical image processing methods.
 
-src/image_degradation.py
+src/images_degradation.py
 
-Parameters used for images degradations:
+Parameters used for images degradation:
 - GAIN = 0.5
 - BIAS = 30
 - SIGMA = 8

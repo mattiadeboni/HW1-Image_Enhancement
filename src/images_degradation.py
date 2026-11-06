@@ -39,8 +39,6 @@ for i, path in enumerate(paths):
     if img is None:
         print(f"skip {path.name}: cannot read")
         continue
-    rng = np.random.default_rng(SEED + i)       # create a seeded random generator for reproducibility
-    out = degrade(img, rng)                     # degrade the image
+    rng = np.random.default_rng(SEED + i)                # create a seeded random generator for reproducibility
+    out = degrade(img, rng)                              # degrade the image
     cv2.imwrite(str(DST_DIR / f"{path.stem}.png"), out)  # PNG: no extra compression
-    g = cv2.cvtColor(out, cv2.COLOR_BGR2GRAY)
-    print(f"{path.name}: mean={g.mean():.0f}, std={g.std():.1f}")
