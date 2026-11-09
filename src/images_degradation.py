@@ -9,6 +9,8 @@ from pathlib import Path
 import cv2
 import numpy as np
 
+from utils import read_bgr
+
 SRC_DIR = Path("data/original")
 DST_DIR = Path("data/degraded")
 
@@ -18,11 +20,6 @@ SIGMA = 8.0   # amount of Gaussian noise
 SEED = 42     # base seed
 
 DST_DIR.mkdir(parents=True, exist_ok=True) # create the output directory if it doesn't exist
-
-
-def read_bgr(path: Path):
-    # np.fromfile + imdecode avoids cv2.imread problems with non-ASCII paths on Windows
-    return cv2.imdecode(np.fromfile(str(path), dtype=np.uint8), cv2.IMREAD_COLOR)
 
 
 def degrade(img, rng):
@@ -35,7 +32,7 @@ def degrade(img, rng):
 paths = sorted(p for p in SRC_DIR.iterdir() if p.suffix.lower() in {".png", ".jpg", ".jpeg"})
 
 for i, path in enumerate(paths):
-    img = read_bgr(path)                        # read the image in BGR format
+    img = read_bgr(path)                                 # read the image in BGR format
     if img is None:
         print(f"skip {path.name}: cannot read")
         continue
