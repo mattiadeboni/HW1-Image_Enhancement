@@ -16,7 +16,7 @@ Author: Mattia De Boni (VR555453)
 Install with:
 
 ```bash
-pip install numpy opencv-python scikit-image
+pip install numpy==2.4.6 opencv-python==5.0.0.93 scikit-image==0.26.0
 ```
 
 ## Data
